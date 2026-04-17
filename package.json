@@ -1,0 +1,22 @@
+{
+  "name": "interview-quest",
+  "version": "1.0.0",
+  "description": "Chrome extension + backend that simulates real coding interviews on LeetCode, evaluating communication, reasoning, and problem-solving in real time.",
+  "homepage": "https://github.com/donnyjb06/interview-quest#readme",
+  "bugs": {
+    "url": "https://github.com/donnyjb06/interview-quest/issues"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/* "
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donnyjb06/interview-quest.git"
+  },
+  "license": "MIT",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
