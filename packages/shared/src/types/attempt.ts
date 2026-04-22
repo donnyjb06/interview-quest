@@ -8,7 +8,6 @@ type Attempt = {
   language: Language;
   status: AttemptStatus;
   results: {
-    score: number;
     strongPoints: string[];
     weakPoints: string[];
   } | null;
@@ -16,7 +15,6 @@ type Attempt = {
   startedAt: string;
   endedAt: string | null;
 };
-
 type AttemptStatus =
   | "ACTIVE"
   | "FINALIZING_FOR_ANALYSIS"
@@ -25,4 +23,3 @@ type AttemptStatus =
   | "EVALUATING_FINAL_SOLUTION"
   | "SCORED";
 
-export type { Attempt, AttemptStatus };

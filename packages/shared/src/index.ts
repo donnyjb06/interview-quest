@@ -1,6 +1,10 @@
-export type { Session, SessionStatus } from "./session";
-export type { Attempt, AttemptStatus } from "./attempt";
-export type { Problem, EnrichedProblem, ProblemAiAnalysis } from "./problem";
-export type { FollowUp } from "./followup";
-export type { AudioSegment } from "./audiosegment";
-export type { Language } from "./language";
+export type { Session, SessionStatus } from "./types/session";
+export type { Attempt, AttemptStatus, AttemptScores } from "./types/attempt";
+export type {
+  Problem,
+  EnrichedProblem,
+  ProblemAiAnalysis,
+} from "./types/problem";
+export type { FollowUp } from "./types/followup";
+export type { AudioSegment } from "./types/audiosegment";
+export type { Language } from "./types/language";
