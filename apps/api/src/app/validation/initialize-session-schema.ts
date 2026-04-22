@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 const initializeSessionSchema = z.strictObject({
-  chromeUserId: z.string(),
   problem: z.strictObject({
     id: z.string(),
     slug: z.string(),
