@@ -1,0 +1,26 @@
+{
+  "name": "Interview Quest",
+  "description": "Improve your problem-solving communication by verbally explaining your solutions and receiving structured feedback on clarity, reasoning, and delivery—directly within LeetCode.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": {
+      "16": "logos/logo-16x16.png",
+      "32": "logos/logo-32x32.png",
+      "64": "logos/logo-64x64.png",
+      "128": "logos/logo-128x128.png"
+    }
+  },
+  "icons": {
+    "16": "logos/logo-16x16.png",
+    "32": "logos/logo-32x32.png",
+    "64": "logos/logo-64x64.png",
+    "128": "logos/logo-128x128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*/"],
+      "js": ["test.js"]
+    }
+  ]
+}
