@@ -1,12 +1,7 @@
-import {
-  Trophy,
-  TrendingUp,
-  MessageCircle,
-  Code2,
-  Zap,
-  ChevronRight,
-} from "lucide-react";
+import { MessageCircle, Code2, Zap, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import SidebarHeader from "./SidebarHeader";
+import { RANK_THRESHOLDS } from "shared";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -65,45 +60,13 @@ function ExtensionSidebar() {
           isCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        {/* Header / Progress Area */}
-        <div className="section">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-elevated-surface flex items-center justify-center">
-              <Trophy
-                className="w-5 h-5 text-secondary-foreground"
-                strokeWidth={2}
-              />
-            </div>
-            <div>
-              <div className="text-strong-sm">Bronze Brain</div>
-              <div className="text-secondary-foreground text-xs">
-                620 / 800 XP
-              </div>
-            </div>
-          </div>
-
-          {/* XP Progress Bar */}
-          <div className="mb-3">
-            <div className="h-2 bg-surface rounded-full overflow-hidden">
-              <div
-                className="h-full bg-accent rounded-full transition-all"
-                style={{ width: "77.5%" }}
-              />
-            </div>
-          </div>
-
-          {/* Readiness Status */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-accent" strokeWidth={2} />
-              <span className="text-strong-sm">78% Ready</span>
-            </div>
-            <span className="text-secondary-foreground text-xs">
-              Heating Up
-            </span>
-          </div>
-        </div>
-
+        <SidebarHeader
+          rank="Unranked"
+          rankThreshold={RANK_THRESHOLDS.lockedIn}
+          xpAmount={50}
+          readinessPercentage={29}
+          readinessStatus="Cold"
+        />
         {/* Session Controls */}
         <div className="section space-y-3">
           <button className="action-button bg-success hover:bg-success-hover text-white">
