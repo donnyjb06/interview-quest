@@ -8,4 +8,6 @@ export type {
 export type { FollowUp } from "./types/followup";
 export type { AudioSegment } from "./types/audiosegment";
 export type { Language } from "./types/language";
+export type { Rank, ReadinessStatus } from "./types/leveling";
 export { calculateAverage, calculateOverallScore } from "./utils/scoring";
+export { RANK_THRESHOLDS, READINESS_THRESHOLDS } from "./utils/leveling";
