@@ -5,6 +5,8 @@
   --color-surface: #111827;
   --color-elevated-surface: #1f2937;
   --color-accent: #3b82f6;
+  --color-muted-accent: #60a5fa;
+  --color-accent-active: #2563eb;
 
   --color-foreground: #e5e7eb;
   --color-secondary-foreground: #9ca3af;
@@ -12,13 +14,50 @@
 
   --color-border: #374151;
   --color-success: #22c55e;
+  --color-success-hover: #16a34a;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
+  --font-jetbrains-mono: "JetBrains Mono";
+  --font-inter-sans: "Inter";
 }
 
 @layer base {
   html,
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground relative font-inter-sans;
+  }
+}
+
+@utility card-border {
+  @apply border border-border;
+}
+
+@utility section-border {
+  @apply border-b border-border;
+}
+
+@utility text-strong-sm {
+  @apply text-foreground text-sm font-medium;
+}
+
+@utility text-muted-sm {
+  @apply text-secondary-foreground text-sm;
+}
+
+@utility eyebrow {
+  @apply text-secondary-foreground text-xs uppercase tracking-wider;
+}
+
+@layer components {
+  .card {
+    @apply bg-surface rounded-lg card-border;
+  }
+
+  .section {
+    @apply p-6 section-border;
+  }
+
+  .action-button {
+    @apply w-full h-10 px-4 rounded-lg text-sm font-medium transition-colors;
   }
 }
