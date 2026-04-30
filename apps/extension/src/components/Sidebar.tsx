@@ -3,6 +3,7 @@ import { useState } from "react";
 import SidebarHeader from "./SidebarHeader";
 import { RANK_THRESHOLDS } from "shared";
 import TimerCard from "./TimerCard";
+import ScoreCard from "./ScoreCard";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -83,18 +84,8 @@ function ExtensionSidebar() {
 
         <TimerCard seconds={65} />
 
-        {/* Results Area */}
         <div className="p-6 flex-1">
-          {/* Overall Score */}
-          <div className="card p-6 mb-4">
-            <div className="text-center">
-              <div className="eyebrow mb-2">Overall Score</div>
-              <div className="text-foreground text-5xl font-bold">
-                82
-                <span className="text-secondary-foreground text-2xl">/100</span>
-              </div>
-            </div>
-          </div>
+          <ScoreCard attemptScore={74} />
 
           {/* Breakdown */}
           <div className="space-y-3 mb-6">
