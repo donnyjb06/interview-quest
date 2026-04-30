@@ -8,13 +8,11 @@ export default function XpBar({ max, value }: XpBarProps) {
     max <= 0 ? 0 : Math.min(Math.max((value / max) * 100, 0), 100);
 
   return (
-    <div className="mb-3">
-      <div className="h-2 bg-surface rounded-full overflow-hidden">
-        <div
-          className="h-full bg-accent rounded-full transition-all"
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
+    <div className="h-2 bg-surface rounded-full overflow-hidden">
+      <div
+        className="h-full bg-accent rounded-full transition-all"
+        style={{ width: `${percentage}%` }}
+      />
     </div>
   );
 }

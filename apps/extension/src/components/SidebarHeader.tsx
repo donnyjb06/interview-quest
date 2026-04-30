@@ -33,7 +33,9 @@ const SidebarHeader = ({
         </div>
       </div>
 
-      <XpBar value={xpAmount} max={rankThreshold} />
+      <div className="mb-3">
+        <XpBar value={xpAmount} max={rankThreshold} />
+      </div>
 
       {/* Readiness Status */}
       <div className="flex items-center justify-between">
