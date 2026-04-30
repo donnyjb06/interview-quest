@@ -34,7 +34,7 @@ const SidebarHeader = ({
       </div>
 
       <div className="mb-3">
-        <XpBar value={xpAmount} max={rankThreshold} />
+        <XpBar value={xpAmount} max={rankThreshold} size="md" />
       </div>
 
       {/* Readiness Status */}
