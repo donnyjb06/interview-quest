@@ -2,6 +2,7 @@ import { MessageCircle, Code2, Zap, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import SidebarHeader from "./SidebarHeader";
 import { RANK_THRESHOLDS } from "shared";
+import TimerCard from "./TimerCard";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -80,17 +81,7 @@ function ExtensionSidebar() {
           </button>
         </div>
 
-        {/* Timer Card */}
-        <div className="section">
-          <div className="card p-6">
-            <div className="text-center">
-              <div className="eyebrow mb-2">Elapsed Time</div>
-              <div className="text-foreground text-4xl font-jetbrains-mono">
-                12:34
-              </div>
-            </div>
-          </div>
-        </div>
+        <TimerCard seconds={65} />
 
         {/* Results Area */}
         <div className="p-6 flex-1">

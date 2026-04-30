@@ -21,4 +21,16 @@ function ensureHeadLink({ href, rel, crossOrigin }: HeadLinkConfig) {
   return link;
 }
 
-export { ensureHeadLink };
+const formatTimer = (
+  totalSeconds: number,
+  type: "horizontal" | "vertical",
+): string | { minutes: number; seconds: number } => {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return type === "horizontal"
+    ? `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+    : { minutes, seconds };
+};
+
+export { ensureHeadLink, formatTimer };
