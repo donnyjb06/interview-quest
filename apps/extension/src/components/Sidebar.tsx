@@ -4,6 +4,7 @@ import SidebarHeader from "./SidebarHeader";
 import { RANK_THRESHOLDS } from "shared";
 import TimerCard from "./TimerCard";
 import ScoreCard from "./ScoreCard";
+import ScoreBreakdownCard from "./ScoreBreakdownCard";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -87,42 +88,17 @@ function ExtensionSidebar() {
         <div className="p-6 flex-1">
           <ScoreCard attemptScore={74} />
 
-          {/* Breakdown */}
           <div className="space-y-3 mb-6">
-            <div className="card p-4">
-              <div className="flex items-center justify-between mb-1">
-                <div className="flex items-center gap-2">
-                  <MessageCircle
-                    className="w-4 h-4 text-accent"
-                    strokeWidth={2}
-                  />
-                  <span className="text-strong-sm">Communication</span>
-                </div>
-                <span className="text-strong-sm">85</span>
-              </div>
-              <div className="h-1.5 bg-elevated-surface rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-accent rounded-full"
-                  style={{ width: "85%" }}
-                />
-              </div>
-            </div>
-
-            <div className="card p-4">
-              <div className="flex items-center justify-between mb-1">
-                <div className="flex items-center gap-2">
-                  <Code2 className="w-4 h-4 text-accent" strokeWidth={2} />
-                  <span className="text-strong-sm">Technical Alignment</span>
-                </div>
-                <span className="text-strong-sm">79</span>
-              </div>
-              <div className="h-1.5 bg-elevated-surface rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-accent rounded-full"
-                  style={{ width: "79%" }}
-                />
-              </div>
-            </div>
+            <ScoreBreakdownCard
+              metric="Communication"
+              score={85}
+              Icon={MessageCircle}
+            />
+            <ScoreBreakdownCard
+              metric="Technical Alignment"
+              score={79}
+              Icon={Code2}
+            />
           </div>
 
           {/* Feedback */}
