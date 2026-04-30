@@ -1,10 +1,10 @@
-interface XpBarProps {
+interface ProgressBarProps {
   max: number;
   value: number;
   size: "sm" | "md";
 }
 
-export default function XpBar({ max, value, size }: XpBarProps) {
+export default function ProgressBar({ max, value, size }: ProgressBarProps) {
   const percentage =
     max <= 0 ? 0 : Math.min(Math.max((value / max) * 100, 0), 100);
 

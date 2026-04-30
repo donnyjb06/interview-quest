@@ -1,7 +1,7 @@
 import { TrendingUp, Trophy } from "lucide-react";
 import { RANK_THRESHOLDS, type ReadinessStatus, type Rank } from "shared";
 
-import XpBar from "./XpBar";
+import ProgressBar from "./ProgressBar";
 
 interface SidebarHeaderProps {
   rank: Rank;
@@ -34,7 +34,7 @@ const SidebarHeader = ({
       </div>
 
       <div className="mb-3">
-        <XpBar value={xpAmount} max={rankThreshold} size="md" />
+        <ProgressBar value={xpAmount} max={rankThreshold} size="md" />
       </div>
 
       {/* Readiness Status */}
