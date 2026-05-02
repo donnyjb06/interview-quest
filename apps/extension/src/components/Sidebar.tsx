@@ -5,6 +5,7 @@ import { RANK_THRESHOLDS } from "shared";
 import TimerCard from "./TimerCard";
 import ScoreCard from "./ScoreCard";
 import ScoreBreakdownCard from "./ScoreBreakdownCard";
+import KeyFeedback from "./KeyFeedback";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -101,29 +102,16 @@ function ExtensionSidebar() {
             />
           </div>
 
-          {/* Feedback */}
           <div className="mb-6">
-            <div className="text-strong-sm mb-3">Key Feedback</div>
-            <div className="space-y-2.5">
-              <div className="flex gap-2">
-                <div className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                <p className="text-muted-sm leading-relaxed">
-                  Strong explanation of time complexity and clear reasoning
-                  throughout
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <div className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                <p className="text-muted-sm leading-relaxed">
-                  Consider discussing edge cases earlier in your approach
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <div className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                <p className="text-muted-sm leading-relaxed">
-                  Good use of examples to validate solution correctness
-                </p>
-              </div>
+            <div className="flex flex-col gap-4">
+              <KeyFeedback
+                heading="Strong Points"
+                listContent={mockAttempt.results?.strongPoints}
+              />
+              <KeyFeedback
+                heading="Weak Points"
+                listContent={mockAttempt.results?.weakPoints}
+              />
             </div>
           </div>
 
