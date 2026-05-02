@@ -9,10 +9,11 @@ import KeyFeedback from "./KeyFeedback";
 import { mockAttempt } from "../mocks/attempt.mock";
 import FollowUpCard from "./FollowUpCard";
 import ChevronToggle from "./ChevronToggle";
+import CollapsedSidebar from "./CollapsedSidebar";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const isSessionActive = true; // This would come from your session state
+  const isSessionActive = false; // This would come from your session state
 
   return (
     <div
@@ -27,27 +28,7 @@ function ExtensionSidebar() {
       />
       {/* Collapsed State Content */}
       {isCollapsed && (
-        <div className="flex flex-col items-center pt-20 px-2 gap-6">
-          {/* Session State Indicator */}
-          <div className="flex items-center justify-center">
-            <div
-              className={`w-2 h-2 rounded-full ${
-                isSessionActive ? "bg-error" : "bg-border"
-              }`}
-            />
-          </div>
-
-          {/* Timer - Vertical Format */}
-          <div className="flex flex-col items-center gap-1">
-            <div className="text-foreground text-lg font-jetbrains-mono tracking-tight">
-              <div className="text-center">12</div>
-              <div className="text-center text-secondary-foreground text-xs">
-                :
-              </div>
-              <div className="text-center">34</div>
-            </div>
-          </div>
-        </div>
+        <CollapsedSidebar timeElapsed={65} isSessionActive={isSessionActive} />
       )}
 
       {/* Sidebar Content */}
