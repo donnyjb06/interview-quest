@@ -6,6 +6,8 @@ import TimerCard from "./TimerCard";
 import ScoreCard from "./ScoreCard";
 import ScoreBreakdownCard from "./ScoreBreakdownCard";
 import KeyFeedback from "./KeyFeedback";
+import { mockAttempt } from "../mocks/attempt.mock";
+import FollowUpCard from "./FollowUpCard";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -117,23 +119,11 @@ function ExtensionSidebar() {
 
           {/* Follow-up Questions */}
           <div className="mb-6">
-            <div className="text-strong-sm mb-3">Follow-up Questions</div>
+            <h2 className="text-strong-sm mb-3">Follow-up Questions</h2>
             <div className="space-y-2">
-              <div className="card p-3">
-                <p className="text-muted-sm">
-                  How would you optimize for memory usage?
-                </p>
-              </div>
-              <div className="card p-3">
-                <p className="text-muted-sm">
-                  What if the input size exceeded memory limits?
-                </p>
-              </div>
-              <div className="card p-3">
-                <p className="text-muted-sm">
-                  Can you achieve this with O(1) space complexity?
-                </p>
-              </div>
+              {mockAttempt.followUps?.map((followup) => (
+                <FollowUpCard content={followup.question} />
+              ))}
             </div>
           </div>
 
