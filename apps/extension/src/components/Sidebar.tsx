@@ -1,4 +1,4 @@
-import { MessageCircle, Code2, Zap } from "lucide-react";
+import { MessageCircle, Code2 } from "lucide-react";
 import { useState } from "react";
 import SidebarHeader from "./SidebarHeader";
 import { RANK_THRESHOLDS } from "shared";
@@ -10,6 +10,7 @@ import { mockAttempt } from "../mocks/attempt.mock";
 import FollowUpCard from "./FollowUpCard";
 import ChevronToggle from "./ChevronToggle";
 import CollapsedSidebar from "./CollapsedSidebar";
+import XpReinforcementCard from "./XpReinforcementCard";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -99,14 +100,7 @@ function ExtensionSidebar() {
           </div>
 
           {/* XP Reinforcement */}
-          <div className="card p-3 flex items-center justify-center gap-2">
-            <Zap
-              className="w-4 h-4 text-accent"
-              strokeWidth={2}
-              fill="currentColor"
-            />
-            <span className="text-strong-sm">+120 XP</span>
-          </div>
+          <XpReinforcementCard xpAmount={120} />
         </div>
       </div>
     </div>
