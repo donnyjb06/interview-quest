@@ -18,7 +18,7 @@ function ExtensionSidebar() {
 
   return (
     <div
-      className={`fixed right-0 top-0 h-screen bg-background border-l border-border flex flex-col overflow-hidden transition-all duration-300 ${
+      className={`fixed right-0 top-0 h-screen bg-background border-l border-border flex flex-col overflow-hidden transition-all duration-300 z-50 ${
         isCollapsed ? "w-16" : "w-95"
       }`}
     >

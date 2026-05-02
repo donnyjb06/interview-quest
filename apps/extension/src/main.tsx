@@ -25,7 +25,19 @@ ensureHeadLink({
   href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
 });
 
-createRoot(document.getElementById("root")!).render(
+const host = document.createElement("div");
+host.id = "iq-extension-root";
+document.body.appendChild(host);
+
+const shadowRoot = host.attachShadow({ mode: "open" });
+const styleLink = document.createElement("link");
+styleLink.rel = "stylesheet";
+styleLink.href = chrome.runtime.getURL("assets/index.css");
+shadowRoot.appendChild(styleLink);
+const appRoot = document.createElement("div");
+shadowRoot.appendChild(appRoot);
+
+createRoot(appRoot).render(
   <StrictMode>
     <App />
   </StrictMode>,
