@@ -1,4 +1,4 @@
-import { MessageCircle, Code2, Zap, ChevronRight } from "lucide-react";
+import { MessageCircle, Code2, Zap } from "lucide-react";
 import { useState } from "react";
 import SidebarHeader from "./SidebarHeader";
 import { RANK_THRESHOLDS } from "shared";
@@ -8,6 +8,7 @@ import ScoreBreakdownCard from "./ScoreBreakdownCard";
 import KeyFeedback from "./KeyFeedback";
 import { mockAttempt } from "../mocks/attempt.mock";
 import FollowUpCard from "./FollowUpCard";
+import ChevronToggle from "./ChevronToggle";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -20,21 +21,10 @@ function ExtensionSidebar() {
       }`}
     >
       {/* Toggle Button - positioned on the right edge */}
-      <button
-        onClick={() => setIsCollapsed(!isCollapsed)}
-        className={`absolute top-6 z-10 w-10 h-10 flex items-center justify-center hover:bg-surface transition-colors rounded ${
-          isCollapsed ? "left-1/2 -translate-x-1/2" : "right-4"
-        }`}
-        aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-      >
-        <ChevronRight
-          className={`w-5 h-5 text-secondary-foreground transition-transform duration-300 ${
-            isCollapsed ? "rotate-180" : ""
-          }`}
-          strokeWidth={2}
-        />
-      </button>
-
+      <ChevronToggle
+        isCollapsed={isCollapsed}
+        setIsCollapsed={setIsCollapsed}
+      />
       {/* Collapsed State Content */}
       {isCollapsed && (
         <div className="flex flex-col items-center pt-20 px-2 gap-6">
