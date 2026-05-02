@@ -16,7 +16,7 @@ function ExtensionSidebar() {
   return (
     <div
       className={`fixed right-0 top-0 h-screen bg-background border-l border-border flex flex-col overflow-hidden transition-all duration-300 ${
-        isCollapsed ? "w-[64px]" : "w-[380px]"
+        isCollapsed ? "w-16" : "w-95"
       }`}
     >
       {/* Toggle Button - positioned on the right edge */}
