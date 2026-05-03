@@ -15,8 +15,6 @@
     // and npm install -D @types/node
 
     // Other Outputs
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
 
     // Stricter Typechecking Options
