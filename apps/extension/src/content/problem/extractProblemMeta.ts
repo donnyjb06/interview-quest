@@ -1,6 +1,6 @@
-import { extractProblemHeadingText } from "./extractProblemHeadingText.ts";
-import { extractProblemNumber } from "./extractProblemNumber";
-import { extractProblemTitle } from "./extractProblemTitle";
+import { extractProblemHeadingText } from "./extractProblemHeading.ts";
+import { extractProblemNumber } from "./parseProblemNumber.ts";
+import { extractProblemTitle } from "./parseProblemTitle.ts";
 
 export const extractProblemMeta = () => {
   const heading = extractProblemHeadingText();

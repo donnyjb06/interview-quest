@@ -1,4 +1,4 @@
-import { SELECTORS } from "../lib/constants";
+import { SELECTORS } from "../../lib/constants";
 
 export const extractProblemHeadingText = (): string | null => {
   const titleLink = document.querySelector(SELECTORS.title);
