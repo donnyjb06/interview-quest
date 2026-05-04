@@ -1,9 +1,16 @@
-import { extractProblemHeadingText } from "./extractProblemHeading.ts";
+import { SELECTORS } from "../../lib/constants.ts";
+import { extractProblemHeading } from "./extractProblemHeading.ts";
 import { extractProblemNumber } from "./parseProblemNumber.ts";
 import { extractProblemTitle } from "./parseProblemTitle.ts";
 
-export const extractProblemMeta = () => {
-  const heading = extractProblemHeadingText();
+export const extractProblemMeta = (): {
+  number: number;
+  title: string;
+} | null => {
+  const headingElement = document.querySelector(SELECTORS.heading);
+  if (!headingElement) return null;
+
+  const heading = extractProblemHeading(headingElement);
 
   if (!heading) return null;
 
@@ -11,5 +18,5 @@ export const extractProblemMeta = () => {
   const title = extractProblemTitle(heading);
 
   if (!number || !title) return null;
-  return { number, title };
+  return { number: parseInt(number), title };
 };

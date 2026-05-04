@@ -1,5 +1,5 @@
 const SELECTORS = {
-  title: "div.text-title-large a",
+  heading: "div.text-title-large",
   description: '[data-track-load="description_content"]',
 };
 
