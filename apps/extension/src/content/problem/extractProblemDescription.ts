@@ -1,4 +1,4 @@
-import { extractTextFromNode } from "./extractTextFromNode";
+import { extractTextFromNode } from "../extractTextFromNode";
 import { getIntroParagraphs } from "./getIntroParagraphs";
 
 export const extractProblemDescription = (
