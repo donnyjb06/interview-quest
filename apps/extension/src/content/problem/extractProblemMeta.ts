@@ -4,7 +4,7 @@ import { extractProblemNumber } from "./parseProblemNumber.ts";
 import { extractProblemTitle } from "./parseProblemTitle.ts";
 
 export const extractProblemMeta = (): {
-  number: number;
+  number: string;
   title: string;
 } | null => {
   const headingElement = document.querySelector(SELECTORS.heading);
@@ -18,5 +18,5 @@ export const extractProblemMeta = (): {
   const title = extractProblemTitle(heading);
 
   if (!number || !title) return null;
-  return { number: parseInt(number), title };
+  return { number, title };
 };
