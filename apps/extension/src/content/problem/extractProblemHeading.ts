@@ -1,7 +1,7 @@
-import { SELECTORS } from "../../lib/constants";
-
-export const extractProblemHeading = (): string | null => {
-  const titleLink = document.querySelector(SELECTORS.title);
+export const extractProblemHeading = (
+  container: ParentNode = document,
+): string | null => {
+  const titleLink = container.querySelector("a");
   const title = titleLink?.textContent.trim();
   return title ?? null;
 };
