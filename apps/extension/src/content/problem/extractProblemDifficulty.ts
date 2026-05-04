@@ -1,18 +1,16 @@
-import { SELECTORS } from "../../lib/constants";
-
 export const extractProblemDifficulty = ():
   | "EASY"
   | "MEDIUM"
   | "HARD"
   | null => {
   const easyDifficulty = document.querySelector(
-    `${SELECTORS.difficultyContainer} > .text-difficulty-easy`,
+    ".text-caption.text-difficulty-easy",
   );
   const mediumDifficulty = document.querySelector(
-    `${SELECTORS.difficultyContainer} > .text-difficulty-medium`,
+    ".text-caption.text-difficulty-medium",
   );
   const hardDifficulty = document.querySelector(
-    `${SELECTORS.difficultyContainer} > .text-difficulty-hard`,
+    ".text-caption.text-difficulty-hard",
   );
 
   if (easyDifficulty) return "EASY";
