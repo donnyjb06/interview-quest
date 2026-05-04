@@ -1,4 +1,4 @@
-export const exportProblemSlug = () => {
+export const extractProblemSlug = () => {
   const parts = window.location.pathname.split("/");
   const index = parts.indexOf("problems");
 
