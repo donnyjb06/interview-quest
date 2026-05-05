@@ -3,5 +3,6 @@ export const extractProblemHeading = (
 ): string | null => {
   const titleLink = container.querySelector("a");
   const title = titleLink?.textContent.trim();
-  return title ?? null;
+
+  return title || null;
 };
