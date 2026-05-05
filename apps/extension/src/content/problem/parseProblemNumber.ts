@@ -1,4 +1,5 @@
-export const extractProblemNumber = (headingText: string) => {
-  const problemNumber = headingText.split(".")[0];
-  return problemNumber ?? null;
+export const parseProblemNumber = (headingText: string) => {
+  const match = headingText.match(/^(\d+)\./);
+
+  return match ? match[1] : null;
 };
