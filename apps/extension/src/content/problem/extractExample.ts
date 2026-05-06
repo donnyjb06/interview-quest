@@ -1,6 +1,8 @@
 import type { Example } from "../../lib/types";
 
-export const extractExample = (exampleElement: HTMLPreElement): Example => {
+export const extractExample = (
+  exampleElement: HTMLPreElement,
+): Example | null => {
   const exampleChildNodes = exampleElement.childNodes;
   const example: Example = {
     input: "",
@@ -23,6 +25,8 @@ export const extractExample = (exampleElement: HTMLPreElement): Example => {
       example.explanation = node.nextSibling?.textContent?.trim() ?? null;
     }
   }
+
+  if (!example.input || !example.output) return null;
 
   return example;
 };
