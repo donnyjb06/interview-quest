@@ -25,7 +25,7 @@ export const buildProblemDetails = () => {
     !slug ||
     !metaData ||
     !description ||
-    !(examples.length > 0) ||
+    !examples ||
     !(constraints.length > 0) ||
     !difficulty
   ) {
