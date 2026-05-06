@@ -9,7 +9,8 @@ import { extractProblemTopics } from "./extractProblemTopics";
 import { extractProblemDifficulty } from "./extractProblemDifficulty";
 
 export const buildProblemDetails = () => {
-  const slug = extractProblemSlug();
+  const pathName = window.location.pathname;
+  const slug = extractProblemSlug(pathName);
   const metaData = extractProblemMeta();
 
   const problemDetailsContainer = document.querySelector(SELECTORS.details);
