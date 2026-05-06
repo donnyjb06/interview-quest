@@ -1,5 +1,11 @@
 export const parseProblemTitle = (headingText: string): string | null => {
-  const match = headingText.match(/^\d+\.\s*(.+)$/);
+  const normalizedHeading = headingText.trim();
 
-  return match ? match[1] : null;
+  if (/^\d+\.\s*$/.test(normalizedHeading)) {
+    return null;
+  }
+
+  const match = normalizedHeading.match(/^(?:\d+\.\s*|\.\s*)?(.+)$/);
+
+  return match ? match[1].trim() : null;
 };
