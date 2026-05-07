@@ -3,12 +3,12 @@ import { getIntroParagraphs } from "./getIntroParagraphs";
 
 export const extractProblemDescription = (
   detailsContainer: Element,
-): string => {
+): string | null => {
   const descriptionElements = getIntroParagraphs(detailsContainer);
 
   const description = descriptionElements
-    .map((element) => extractTextFromNode(element))
+    .map((element) => extractTextFromNode(element).trim())
     .join(" ");
 
-  return description;
+  return description || null;
 };
