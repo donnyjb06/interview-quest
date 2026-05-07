@@ -10,7 +10,7 @@ export const extractConstraints = (container: Element): string[] => {
 
   for (const listItem of constraintListItems) {
     const hasChildElement = !!listItem.firstChild;
-    if (!hasChildElement || !listItem.firstChild.textContent) break;
+    if (!hasChildElement || !listItem.firstChild.textContent) continue;
 
     constraints.push(listItem.firstChild.textContent);
   }
