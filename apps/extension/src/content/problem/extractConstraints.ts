@@ -4,16 +4,7 @@ export const extractConstraints = (container: Element): string[] => {
   const constraintUList = container.querySelector("ul");
   if (!constraintUList) return constraints;
 
-  const constraintListItems = Array.from(
-    constraintUList.querySelectorAll("li"),
+  return Array.from(constraintUList.querySelectorAll("li")).map(
+    (listItem) => listItem.textContent?.trim() ?? "",
   );
-
-  for (const listItem of constraintListItems) {
-    const hasChildElement = !!listItem.firstChild;
-    if (!hasChildElement || !listItem.firstChild.textContent) continue;
-
-    constraints.push(listItem.firstChild.textContent);
-  }
-
-  return constraints;
 };
