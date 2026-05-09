@@ -106,7 +106,7 @@ export const createProblemPageFixture = ({
     `;
 };
 
-export const buildValidProblemDetails = () => {
+export const buildValidProblemDetails = (hasTopics: boolean = true) => {
   return {
     id: "1",
     slug: "two-sum",
@@ -137,6 +137,6 @@ export const buildValidProblemDetails = () => {
       "-109 <= target <= 109",
       "Only one valid answer exists.",
     ],
-    topics: ["Junior", "Array", "Hash Map"],
+    topics: hasTopics ? ["Junior", "Array", "Hash Map"] : [],
   };
 };
