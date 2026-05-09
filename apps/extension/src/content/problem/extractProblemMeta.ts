@@ -1,7 +1,7 @@
 import { SELECTORS } from "../../lib/constants.ts";
 import { extractProblemHeading } from "./extractProblemHeading.ts";
-import { extractProblemNumber } from "./parseProblemNumber.ts";
-import { extractProblemTitle } from "./parseProblemTitle.ts";
+import { parseProblemNumber } from "./parseProblemNumber.ts";
+import { parseProblemTitle } from "./parseProblemTitle.ts";
 
 export const extractProblemMeta = (): {
   number: string;
@@ -14,8 +14,8 @@ export const extractProblemMeta = (): {
 
   if (!heading) return null;
 
-  const number = extractProblemNumber(heading);
-  const title = extractProblemTitle(heading);
+  const number = parseProblemNumber(heading);
+  const title = parseProblemTitle(heading);
 
   if (!number || !title) return null;
   return { number, title };
