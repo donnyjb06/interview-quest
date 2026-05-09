@@ -4,4 +4,10 @@ type HeadLinkConfig = {
   crossOrigin?: "anonymous";
 };
 
-export type { HeadLinkConfig };
+type Example = {
+  input: string;
+  output: string;
+  explanation: string | null;
+};
+
+export type { HeadLinkConfig, Example };

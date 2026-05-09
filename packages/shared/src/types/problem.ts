@@ -10,7 +10,7 @@ type Problem = {
     explanation: string | null;
   }[];
   constraints: string[];
-  topics: string[];
+  topics: string[] | null;
 };
 
 type EnrichedProblem = Problem & {
