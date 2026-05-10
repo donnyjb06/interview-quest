@@ -16,10 +16,12 @@ export const useProblem = () => {
       return false;
     };
 
-    if (tryExtraction()) return;
+    const isProblemExtracted = tryExtraction();
+    if (isProblemExtracted) return;
 
     const documentObserver = new MutationObserver(() => {
-      if (tryExtraction()) documentObserver.disconnect();
+      const isProblemExtracted = tryExtraction();
+      if (isProblemExtracted) documentObserver.disconnect();
     });
 
     documentObserver.observe(document.body, {
