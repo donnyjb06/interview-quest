@@ -8,9 +8,7 @@ import { extractConstraints } from "./extractConstraints";
 import { extractProblemTopics } from "./extractProblemTopics";
 import { extractProblemDifficulty } from "./extractProblemDifficulty";
 
-export const buildProblemDetails = (
-  pathName: string = window.location.pathname,
-) => {
+export const buildProblemDetails = (pathName: string) => {
   const slug = extractProblemSlug(pathName);
   const metaData = extractProblemMeta();
 
