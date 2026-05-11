@@ -18,7 +18,9 @@
     "clean": "rm -rf dist",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs"
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "test:watch": "vitest",
+    "test": "vitest run"
   },
   "devDependencies": {
     "typescript": "^6.0.3"
