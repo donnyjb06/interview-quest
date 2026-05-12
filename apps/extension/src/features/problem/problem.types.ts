@@ -1,7 +1,7 @@
 import type { Problem, ProblemExtractionFailure } from "shared";
 
 type BuildProblemDetailsResult =
-  | { success: boolean; problem: Problem }
-  | { success: boolean; error: ProblemExtractionFailure };
+  | { success: true; problem: Problem }
+  | { success: false; error: ProblemExtractionFailure };
 
 export type { BuildProblemDetailsResult };

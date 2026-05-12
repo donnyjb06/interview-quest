@@ -10,4 +10,6 @@ type Example = {
   explanation: string | null;
 };
 
-export type { HeadLinkConfig, Example };
+type ProblemExtractionStatus = "WAITING" | "FAILED" | "SUCCESS";
+
+export type { HeadLinkConfig, Example, ProblemExtractionStatus };
