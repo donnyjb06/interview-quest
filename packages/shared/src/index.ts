@@ -4,6 +4,9 @@ export type {
   Problem,
   EnrichedProblem,
   ProblemAiAnalysis,
+  RequiredProblemDetailField,
+  ProblemExtractionFailure,
+  PartialProblem,
 } from "./types/problem";
 export type { FollowUp } from "./types/followup";
 export type { AudioSegment } from "./types/audiosegment";

@@ -1,4 +1,8 @@
-import type { Problem } from "shared";
+import type {
+  PartialProblem,
+  Problem,
+  RequiredProblemDetailField,
+} from "shared";
 import { extractProblemSlug } from "./extractProblemSlug";
 import { extractProblemMeta } from "./extractProblemMeta";
 import { SELECTORS } from "../../lib/constants";
@@ -7,13 +11,18 @@ import { extractExamples } from "./extractExamples";
 import { extractConstraints } from "./extractConstraints";
 import { extractProblemTopics } from "./extractProblemTopics";
 import { extractProblemDifficulty } from "./extractProblemDifficulty";
+import type { BuildProblemDetailsResult } from "../../features/problem/problem.types";
+import { getMissingFields } from "../../features/problem/problem.utils";
 
-export const buildProblemDetails = (pathName: string) => {
+export const buildProblemDetails = (
+  pathName: string,
+): BuildProblemDetailsResult => {
   const slug = extractProblemSlug(pathName);
   const metaData = extractProblemMeta();
 
   const problemDetailsContainer = document.querySelector(SELECTORS.details);
-  if (!problemDetailsContainer) return null;
+  if (!problemDetailsContainer)
+    return { success: false, error: { reason: "MISSING_CONTAINER" } };
 
   const description = extractProblemDescription(problemDetailsContainer);
   const examples = extractExamples(problemDetailsContainer);
@@ -29,7 +38,30 @@ export const buildProblemDetails = (pathName: string) => {
     !(constraints.length > 0) ||
     !difficulty
   ) {
-    return null;
+    const partialProblem: PartialProblem = {
+      slug,
+      topics,
+      id: metaData?.number || null,
+      title: metaData?.title || null,
+      description,
+      examples,
+      constraints,
+      difficulty,
+    };
+
+    const missingDetails: RequiredProblemDetailField[] =
+      getMissingFields(partialProblem);
+
+    const problemFailure: BuildProblemDetailsResult = {
+      success: false,
+      error: {
+        reason: "MISSING_FIELD",
+        missingFields: missingDetails,
+        partialProblem,
+      },
+    };
+
+    return problemFailure;
   }
 
   const problem: Problem = {
@@ -43,5 +75,5 @@ export const buildProblemDetails = (pathName: string) => {
     topics,
   };
 
-  return problem;
+  return { success: true, problem };
 };

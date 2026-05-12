@@ -29,4 +29,30 @@ type ProblemAiAnalysis = {
   followUpGuidelines: string[];
 };
 
-export type { Problem, EnrichedProblem, ProblemAiAnalysis };
+type RequiredProblemDetailField =
+  | "slug"
+  | "id"
+  | "title"
+  | "description"
+  | "examples"
+  | "constraints"
+  | "difficulty";
+
+type PartialProblem = {
+  [K in keyof Problem]: Problem[K] | null;
+};
+
+type ProblemExtractionFailure = {
+  reason: "MISSING_FIELD" | "MISSING_CONTAINER";
+  missingFields?: RequiredProblemDetailField[];
+  partialProblem?: PartialProblem;
+};
+
+export type {
+  Problem,
+  EnrichedProblem,
+  ProblemAiAnalysis,
+  RequiredProblemDetailField,
+  ProblemExtractionFailure,
+  PartialProblem,
+};
