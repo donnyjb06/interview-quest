@@ -42,8 +42,10 @@ type PartialProblem = {
   [K in keyof Problem]: Problem[K] | null;
 };
 
+type ProblemExtractionFailureReason = "MISSING_FIELD" | "MISSING_CONTAINER";
+
 type ProblemExtractionFailure = {
-  reason: "MISSING_FIELD" | "MISSING_CONTAINER";
+  reason: ProblemExtractionFailureReason;
   missingFields?: RequiredProblemDetailField[];
   partialProblem?: PartialProblem;
 };
