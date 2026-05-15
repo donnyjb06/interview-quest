@@ -4,7 +4,7 @@ import {
   createProblemPageFixture,
 } from "../../../content/problem/fixtures/createProblemPageFixture";
 import { useProblem } from "../useProblem";
-import { cleanup, renderHook, waitFor } from "@testing-library/react";
+import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 import { PROBLEM_EXTRACTION_TIMEOUT_MS } from "../problem.constants";
 
 describe("useProblem", () => {
@@ -14,6 +14,30 @@ describe("useProblem", () => {
     cleanup();
     document.body.innerHTML = "";
   });
+
+  it(
+    "returns retry function that resets problem state and status",
+    async () => {
+      const { result } = renderHook(() => useProblem("problems/two-sum"));
+
+      expect(result.current.retryExtraction).toBeTypeOf("function");
+
+      await waitFor(
+        () => {
+          expect(result.current.status).toBe("FAILED");
+        },
+        { timeout: PROBLEM_EXTRACTION_TIMEOUT_MS + TIMEOUT_BUFFER_MS },
+      );
+
+      act(() => {
+        result.current.retryExtraction();
+      });
+
+      expect(result.current.problem).toBeNull();
+      expect(result.current.status).toBe("WAITING");
+    },
+    PROBLEM_EXTRACTION_TIMEOUT_MS + TIMEOUT_BUFFER_MS * 2,
+  );
 
   it("returns null when waiting on problem details to be extracted", () => {
     const { result } = renderHook(() => useProblem("problems/two-sum"));

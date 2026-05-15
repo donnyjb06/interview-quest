@@ -7,6 +7,13 @@ import type { ProblemExtractionStatus } from "../../lib/types";
 export const useProblem = (pathName: string = window.location.pathname) => {
   const [problem, setProblem] = useState<Problem | null>(null);
   const [status, setStatus] = useState<ProblemExtractionStatus>("WAITING");
+  const [retryKey, setRetryKey] = useState<number>(0);
+
+  const retryExtraction = () => {
+    setStatus("WAITING");
+    setProblem(null);
+    setRetryKey((prevKey) => prevKey + 1);
+  };
 
   useEffect(() => {
     const tryExtraction = () => {
@@ -53,7 +60,7 @@ export const useProblem = (pathName: string = window.location.pathname) => {
       documentObserver?.disconnect();
       clearTimeout(problemExtractionTimeout);
     };
-  }, [pathName]);
+  }, [pathName, retryKey]);
 
-  return { problem, status };
+  return { problem, status, retryExtraction };
 };
