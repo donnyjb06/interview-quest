@@ -11,6 +11,7 @@ import FollowUpCard from "./FollowUpCard";
 import ChevronToggle from "./ChevronToggle";
 import CollapsedSidebar from "./CollapsedSidebar";
 import XpReinforcementCard from "./XpReinforcementCard";
+import Button from "./Button";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -74,35 +75,60 @@ function ExtensionSidebar() {
               score={79}
               Icon={Code2}
             />
-          </div>
+            {/* Session Controls */}
+            <div className="section space-y-3">
+              <Button variant="active">Start Session</Button>
+              <Button variant="primary">Analyze Attempt</Button>
+              <Button variant="destructive">End Session </Button>
+            </div>
 
-          <div className="mb-6">
-            <div className="flex flex-col gap-4">
-              <KeyFeedback
-                heading="Strong Points"
-                listContent={mockAttempt.results?.strongPoints}
-              />
-              <KeyFeedback
-                heading="Weak Points"
-                listContent={mockAttempt.results?.weakPoints}
-              />
+            <TimerCard seconds={65} />
+
+            <div className="p-6 flex-1">
+              <ScoreCard attemptScore={74} />
+
+              <div className="space-y-3 mb-6">
+                <ScoreBreakdownCard
+                  metric="Communication"
+                  score={85}
+                  Icon={MessageCircle}
+                />
+                <ScoreBreakdownCard
+                  metric="Technical Alignment"
+                  score={79}
+                  Icon={Code2}
+                />
+              </div>
+
+              <div className="mb-6">
+                <div className="flex flex-col gap-4">
+                  <KeyFeedback
+                    heading="Strong Points"
+                    listContent={mockAttempt.results?.strongPoints}
+                  />
+                  <KeyFeedback
+                    heading="Weak Points"
+                    listContent={mockAttempt.results?.weakPoints}
+                  />
+                </div>
+              </div>
+
+              {/* Follow-up Questions */}
+              <div className="mb-6">
+                <h2 className="text-strong-sm mb-3">Follow-up Questions</h2>
+                <div className="space-y-2">
+                  {mockAttempt.followUps?.map((followup) => (
+                    <FollowUpCard content={followup.question} />
+                  ))}
+                </div>
+              </div>
+
+              {/* XP Reinforcement */}
+              <XpReinforcementCard xpAmount={120} />
             </div>
           </div>
-
-          {/* Follow-up Questions */}
-          <div className="mb-6">
-            <h2 className="text-strong-sm mb-3">Follow-up Questions</h2>
-            <div className="space-y-2">
-              {mockAttempt.followUps?.map((followup) => (
-                <FollowUpCard content={followup.question} />
-              ))}
-            </div>
-          </div>
-
-          {/* XP Reinforcement */}
-          <XpReinforcementCard xpAmount={120} />
         </div>
-      </div>
+      )}
     </div>
   );
 }
