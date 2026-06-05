@@ -32,7 +32,7 @@ document.body.appendChild(host);
 const shadowRoot = host.attachShadow({ mode: "open" });
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
-styleLink.href = chrome.runtime.getURL("assets/index.css");
+styleLink.href = chrome.runtime.getURL("assets/content.css");
 shadowRoot.appendChild(styleLink);
 const appRoot = document.createElement("div");
 shadowRoot.appendChild(appRoot);

@@ -11,11 +11,21 @@ import FollowUpCard from "./FollowUpCard";
 import ChevronToggle from "./ChevronToggle";
 import CollapsedSidebar from "./CollapsedSidebar";
 import XpReinforcementCard from "./XpReinforcementCard";
+import { useProblem } from "../features/problem/useProblem";
 import Button from "./Button";
 
 function ExtensionSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const isSessionActive = false; // This would come from your session state
+  const isSessionActive = false;
+  const { problem, status } = useProblem();
+  console.log(problem, status);
+
+  const handleClick = async () => {
+    const response = await chrome.runtime.sendMessage({
+      type: "TEST_MESSAGE_TYPE",
+    });
+    console.log(response);
+  };
 
   return (
     <div
@@ -33,51 +43,29 @@ function ExtensionSidebar() {
         <CollapsedSidebar timeElapsed={65} isSessionActive={isSessionActive} />
       )}
 
-      {/* Sidebar Content */}
-      <div
-        className={`flex flex-col h-full overflow-y-auto transition-opacity duration-300 ${
-          isCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <SidebarHeader
-          rank="Unranked"
-          rankThreshold={RANK_THRESHOLDS.lockedIn}
-          xpAmount={50}
-          readinessPercentage={29}
-          readinessStatus="Cold"
-        />
-        {/* Session Controls */}
-        <div className="section space-y-3">
-          <button className="action-button bg-success hover:bg-success-hover text-white">
-            Start Session
-          </button>
-          <button className="action-button bg-accent hover:bg-muted-accent active:bg-accent-active text-white">
-            Analyze Attempt
-          </button>
-          <button className="action-button bg-transparent hover:bg-error/8 text-error card-border">
-            End Session
-          </button>
-        </div>
+      {status === "WAITING" && <div>waiting</div>}
 
-        <TimerCard seconds={65} />
+      {status === "FAILED" && <div>failed try again</div>}
 
-        <div className="p-6 flex-1">
-          <ScoreCard attemptScore={74} />
-
-          <div className="space-y-3 mb-6">
-            <ScoreBreakdownCard
-              metric="Communication"
-              score={85}
-              Icon={MessageCircle}
-            />
-            <ScoreBreakdownCard
-              metric="Technical Alignment"
-              score={79}
-              Icon={Code2}
+      {status === "SUCCESS" && (
+        <div>
+          <div
+            className={`flex flex-col h-full overflow-y-auto transition-opacity duration-300 ${
+              isCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+          >
+            <SidebarHeader
+              rank="Unranked"
+              rankThreshold={RANK_THRESHOLDS.lockedIn}
+              xpAmount={50}
+              readinessPercentage={29}
+              readinessStatus="Cold"
             />
             {/* Session Controls */}
             <div className="section space-y-3">
-              <Button variant="active">Start Session</Button>
+              <Button onClick={handleClick} variant="active">
+                Start Session
+              </Button>
               <Button variant="primary">Analyze Attempt</Button>
               <Button variant="destructive">End Session </Button>
             </div>
